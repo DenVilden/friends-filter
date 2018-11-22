@@ -1,0 +1,17 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-prototype-builtins": "off",
+    "global-require": "off"
+  }
+}
