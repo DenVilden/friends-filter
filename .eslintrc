@@ -4,14 +4,11 @@
     "ecmaVersion": 2018
   },
   "env": {
-    "browser": true,
-    "mocha": true
+    "browser": true
   },
   "extends": "airbnb-base",
   "rules": {
     "no-param-reassign": "off",
-    "no-plusplus": "off",
-    "no-prototype-builtins": "off",
-    "global-require": "off"
+    "no-plusplus": "off"
   }
 }
