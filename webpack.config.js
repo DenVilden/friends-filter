@@ -57,7 +57,7 @@ module.exports = (env, options) => {
         }),
         new HtmlPlugin({
           title: 'Drugofiltr',
-          template: 'index.hbs',
+          template: 'template.hbs',
           minify: {
             collapseWhitespace: true,
             removeComments: true,
@@ -72,7 +72,7 @@ module.exports = (env, options) => {
       : [
         new HtmlPlugin({
           title: 'app',
-          template: 'index.hbs',
+          template: 'template.hbs',
         }),
       ],
   };
