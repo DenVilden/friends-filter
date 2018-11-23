@@ -4,7 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const rules = require('./webpack.config.rules');
 
 module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
@@ -13,12 +12,19 @@ module.exports = (env, options) => {
     entry: './src/app.js',
     output: {
       filename: 'js/bundle.js',
-      path: path.resolve('dist'),
+      path: path.resolve(__dirname, 'dist'),
     },
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     module: {
       rules: [
-        ...rules,
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
         {
           test: /\.(css|scss)$/,
           use: isProduction
@@ -37,6 +43,18 @@ module.exports = (env, options) => {
               { loader: 'sass-loader' },
             ]
             : ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
+          test: /\.hbs/,
+          loader: 'handlebars-loader',
+        },
+        {
+          test: /\.(eot|ttf|woff|woff2)$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'font',
+          },
         },
       ],
     },
