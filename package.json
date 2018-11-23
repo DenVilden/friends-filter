@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
-    "test": "eslint src && stylelint src/stylesheets"
+    "test": "eslint src && stylelint src"
   },
   "browserslist": [
     "> 1%",
