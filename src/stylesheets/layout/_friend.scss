@@ -1,0 +1,32 @@
+.friend {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 6rem;
+  padding-left: 0.7rem;
+
+  &:hover {
+    background-color: $light-gray;
+  }
+
+  div {
+    @media (min-width: $non-mobile) {
+      display: flex;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  p {
+    line-height: 1.5rem;
+    padding-left: 0.7rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+}

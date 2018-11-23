@@ -1,0 +1,35 @@
+.friends {
+  display: flex;
+  justify-content: space-between;
+}
+
+.friends-wrapper {
+  padding-left: 1.5rem;
+  width: 31rem;
+
+  &--border {
+    border-right: 0.1rem solid $light-gray;
+  }
+}
+
+.friends-title {
+  border-bottom: 0.1rem solid $light-gray;
+  line-height: 3.2rem;
+  margin-right: 1.7rem;
+  max-height: 3.2rem;
+}
+
+.friends-list {
+  height: 35.5rem;
+  margin-right: 0.7rem;
+  overflow: auto;
+  padding-right: 1rem;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: lighten($gray, 10);
+  }
+}

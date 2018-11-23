@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('../assets/fonts/FiraSans-Light.woff2') format('woff2'),
+    url('../assets/fonts/FiraSans-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('../assets/fonts/FiraSans-Medium.woff') format('woff'),
+    url('../assets/fonts/FiraSans-Medium.woff2') format('woff2');
+}

@@ -9,7 +9,7 @@
     "codestyle": "eslint src && stylelint src/styles",
     "travis": "yarn run codestyle && yarn test",
     "build": "webpack --mode production",
-    "watch": "webpack-dev-server --mode development --open",
+    "watch": "webpack-dev-server --mode development",
     "start": "yarn run watch",
     "test": "karma start",
     "cover": "istanbul cover _mocha -- test/*.js",
@@ -55,6 +55,8 @@
     "webpack-dev-server": "3.1.10"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.8",
+    "@fortawesome/free-solid-svg-icons": "5.5.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage-istanbul-reporter": "2.0.4",
