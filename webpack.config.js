@@ -1,14 +1,13 @@
 const path = require('path');
-const glob = require('glob-all');
-const merge = require('webpack-merge');
-const HtmlPlugin = require('html-webpack-plugin');
+const WebpackMerge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssNormalize = require('postcss-normalize');
 const postcssAutoreset = require('postcss-autoreset');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
+const postcssUncss = require('postcss-uncss');
 
 const sharedConfig = {
   entry: './src/app.js',
@@ -44,6 +43,9 @@ const sharedConfig = {
                     outline: 'none',
                     boxSizing: 'border-box',
                   },
+                }),
+                postcssUncss({
+                  html: ['./src/templates/*.hbs'],
                 }),
                 autoprefixer(),
               ],
@@ -89,9 +91,6 @@ const productionConfig = {
     new MiniCssExtractPlugin({
       filename: 'css/styles.css',
     }),
-    new PurgecssPlugin({
-      paths: glob.sync(['./index.hbs', './src/*/**'], { nodir: true }),
-    }),
     new OptimizeCSSAssetsPlugin({
       cssProcessorPluginOptions: {
         preset: ['default', { discardComments: { removeAll: true } }],
@@ -102,7 +101,7 @@ const productionConfig = {
         },
       },
     }),
-    new HtmlPlugin({
+    new HtmlWebpackPlugin({
       title: 'Drugofiltr',
       template: './index.hbs',
       minify: {
@@ -129,7 +128,7 @@ const developmentConfig = {
     ],
   },
   plugins: [
-    new HtmlPlugin({
+    new HtmlWebpackPlugin({
       title: 'app',
       template: './index.hbs',
     }),
@@ -140,6 +139,6 @@ module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
 
   return isProduction
-    ? merge(productionConfig, sharedConfig)
-    : merge(developmentConfig, sharedConfig);
+    ? WebpackMerge(productionConfig, sharedConfig)
+    : WebpackMerge(developmentConfig, sharedConfig);
 };
