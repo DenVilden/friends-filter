@@ -1,11 +1,11 @@
-@import './abstracts/variables';
-@import './abstracts/mixins';
+@import './utilities/variables';
+@import './utilities/mixins';
 @import './base/fonts';
 @import './base/base';
-@import './components/container';
-@import './components/button';
+@import './layout/grid';
 @import './layout/header';
+@import './layout/filter';
 @import './layout/friends';
 @import './layout/friend';
 @import './layout/footer';
-@import './layout/filter';
+@import './components/buttons';

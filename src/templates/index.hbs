@@ -1,33 +1,30 @@
-<div id="app">
-  <img class="logo" src="./images/logo.png">
-  <div class="container">
-    <header class="header">
-      <h1 class="header-title">Выберите друзей</h1>
-      <button class="header-button">
-        <i class="fas fa-times" style="color: #fff; font-size: 2.2rem;"></i>
-      </button>
-    </header>
-    <section class="filter">
-      <i class="fa fa-search filter-glyph"></i>
-      <input class="filter-input filter-input--padding" type="text" placeholder="Начните вводить имя друга">
-      <input class="filter-input" type="text" placeholder="Название">
-    </section>
-    <main class="friends">
-      <div class="friends-wrapper friends-wrapper--border">
-        <h2 class="friends-title">Ваши друзья</h2>
-        <ul class="friends-list">
-          {{> "friend.hbs"}}
-        </ul>
-      </div>
-      <div class="friends-wrapper">
-        <h2 class="friends-title">Друзья в списке</h2>
-        <ul class="friends-list">
-          {{> "friend.hbs"}}
-        </ul>
-      </div>
-    </main>
-    <footer class="footer">
-      <button class="footer-button button">Сохранить</button>
-    </footer>
-  </div>
+<div class="container">
+  <header class="header">
+    <h1 class="header-title">Выберите друзей</h1>
+    <button class="header-button">
+      <i class="fas fa-times" style="color: #fff; font-size: 2.2rem;"></i>
+    </button>
+  </header>
+  <section class="filter">
+    <i class="fa fa-search filter-glyph"></i>
+    <input class="filter-input filter-input--padding" type="text" placeholder="Начните вводить имя друга">
+    <input class="filter-input" type="text" placeholder="Название">
+  </section>
+  <main class="friends">
+    <div class="friends-wrapper friends-wrapper--border">
+      <h2 class="friends-title">Ваши друзья</h2>
+      <ul class="friends-list">
+        {{> "friend.hbs"}}
+      </ul>
+    </div>
+    <div class="friends-wrapper">
+      <h2 class="friends-title">Друзья в списке</h2>
+      <ul class="friends-list">
+        {{> "friend.hbs"}}
+      </ul>
+    </div>
+  </main>
+  <footer class="footer">
+    <button class="footer-button button">Сохранить</button>
+  </footer>
 </div>
