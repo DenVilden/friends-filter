@@ -2,10 +2,6 @@ html {
   font-size: 62.5%;
 }
 
-* {
-  outline: none;
-}
-
 body {
   background-color: $gray;
   color: $black;
@@ -17,21 +13,12 @@ body {
 h1 {
   font-size: $medium;
   font-weight: 500;
-  margin: 0;
-  padding: 0;
 }
 
 h2 {
   color: $black;
   font-size: $normal;
   font-weight: 500;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
 }
 
 button {

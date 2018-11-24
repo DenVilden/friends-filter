@@ -1,5 +1,4 @@
 .friend {
-  align-items: center;
   display: flex;
   justify-content: space-between;
   min-height: 6rem;
@@ -11,6 +10,7 @@
 
   div {
     @media (min-width: $non-mobile) {
+      align-items: center;
       display: flex;
     }
   }
