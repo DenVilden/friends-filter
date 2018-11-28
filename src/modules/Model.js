@@ -1,4 +1,4 @@
-import { getIndex } from './utils';
+import { getIndex } from './filters';
 
 export default class Model {
   constructor(friends, savedFriends) {

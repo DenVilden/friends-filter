@@ -1,11 +1,8 @@
 import friendTemplate from '../templates/friend.hbs';
 
 export default class View {
-  constructor(friends) {
-    this.friends = friends;
-  }
-
-  get template() {
-    return friendTemplate(this.friends);
+  static render(element, friends) {
+    const template = friendTemplate(friends);
+    element.innerHTML = template;
   }
 }
