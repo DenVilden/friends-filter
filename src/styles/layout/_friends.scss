@@ -3,7 +3,7 @@
   justify-content: space-between;
 }
 
-.friends-wrapper {
+.friends__wrapper {
   padding-left: 1.5rem;
   width: 31rem;
 
@@ -12,7 +12,7 @@
   }
 }
 
-.friends-title {
+.friends__title {
   border-bottom: 0.1rem solid $light-gray;
   line-height: 3.2rem;
   margin-right: 2.1rem;
@@ -23,7 +23,7 @@
   }
 }
 
-.friends-list {
+.friends__list {
   height: 35.5rem;
   margin-right: 0.7rem;
   overflow: auto;

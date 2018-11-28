@@ -11,8 +11,8 @@ export default class Controller {
       textFav: '',
     };
 
-    this.friendsAllDOM = document.querySelector('#friends-all');
-    this.friendsFavDOM = document.querySelector('#friends-fav');
+    this.friendsAllDOM = document.querySelector('#all');
+    this.friendsFavDOM = document.querySelector('#fav');
 
     this.renderAll();
     this.renderFav();
@@ -20,9 +20,9 @@ export default class Controller {
     this.friendsAllDOM.addEventListener('click', this.addFriend.bind(this));
     this.friendsFavDOM.addEventListener('click', this.removeFriend.bind(this));
     this.friendsAllDOM.addEventListener('dragstart', this.dragFriend.bind(this));
-    document.querySelector('.input-all').addEventListener('input', this.filterAll.bind(this));
-    document.querySelector('.input-fav').addEventListener('input', this.filterFav.bind(this));
-    document.querySelector('.footer-button').addEventListener('click', this.saveFriends.bind(this));
+    document.querySelector('#input-all').addEventListener('input', this.filterAll.bind(this));
+    document.querySelector('#input-fav').addEventListener('input', this.filterFav.bind(this));
+    document.querySelector('#save-button').addEventListener('click', this.saveFriends.bind(this));
   }
 
   renderAll() {
