@@ -1,6 +1,6 @@
 import View from './View';
 import Loader from './Loader';
-import { getFilters } from './filters';
+import { getFilters } from './utils/filters';
 
 export default class Controller {
   constructor(model) {

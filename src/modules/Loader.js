@@ -1,4 +1,4 @@
-import Api from './VKApi';
+import Api from './utils/VKApi';
 
 export default class Loader {
   static async loadFriends() {
