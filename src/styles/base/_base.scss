@@ -21,6 +21,12 @@ h2 {
   font-weight: 500;
 }
 
+input {
+  outline: none;
+}
+
 button {
+  border: 0;
   cursor: pointer;
+  outline: none;
 }

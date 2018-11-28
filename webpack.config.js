@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -10,39 +11,30 @@ const postcssAutoreset = require('postcss-autoreset');
 const postcssUncss = require('postcss-uncss');
 
 const sharedConfig = {
-  entry: './src/app.js',
+  entry: ['./src/app.js'],
   output: {
-    filename: 'js/bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/main.js',
+    path: path.resolve('dist'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-        },
-      },
-      {
-        test: /\.(css|scss)$/,
+        test: /\.scss$/,
         use: [
           'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               plugins: [
-                postcssNormalize({
-                  forceImport: true,
-                }),
                 postcssAutoreset({
                   reset: {
                     margin: 0,
                     padding: 0,
-                    outline: 'none',
                     boxSizing: 'border-box',
                   },
+                }),
+                postcssNormalize({
+                  forceImport: true,
                 }),
                 postcssUncss({
                   html: ['./src/templates/*.hbs'],
@@ -59,6 +51,15 @@ const sharedConfig = {
         loader: 'handlebars-loader',
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: ['@babel/plugin-transform-runtime'],
+        },
+      },
+      {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
@@ -68,14 +69,19 @@ const sharedConfig = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Другофильтр',
+      template: 'index.hbs',
+    }),
+  ],
 };
 
 const productionConfig = {
-  devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/,
+        test: /\.scss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -87,7 +93,22 @@ const productionConfig = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          filename: 'js/vendor.js',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   plugins: [
+    new webpack.SourceMapDevToolPlugin({
+      filename: 'js/main.js.map',
+      exclude: ['js/vendor.js'],
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/styles.css',
     }),
@@ -95,30 +116,12 @@ const productionConfig = {
       cssProcessorPluginOptions: {
         preset: ['default', { discardComments: { removeAll: true } }],
       },
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-      },
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Drugofiltr',
-      template: './index.hbs',
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeOptionalTags: true,
-        removeRedundantAttributes: true,
-        removeAttributeQuotes: true,
-        removeTagWhitespace: true,
-      },
     }),
     new CleanWebpackPlugin(['dist']),
   ],
 };
 
 const developmentConfig = {
-  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -127,12 +130,7 @@ const developmentConfig = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'app',
-      template: './index.hbs',
-    }),
-  ],
+  devtool: 'cheap-module-eval-source-map',
 };
 
 module.exports = (env, options) => {

@@ -15,8 +15,12 @@
 .friends-title {
   border-bottom: 0.1rem solid $light-gray;
   line-height: 3.2rem;
-  margin-right: 1.7rem;
+  margin-right: 2.1rem;
   max-height: 3.2rem;
+
+  &--margin {
+    margin-right: 2.2rem;
+  }
 }
 
 .friends-list {
@@ -24,6 +28,8 @@
   margin-right: 0.7rem;
   overflow: auto;
   padding-right: 1rem;
+  position: relative;
+  text-align: center;
 
   &::-webkit-scrollbar {
     width: 0.4rem;

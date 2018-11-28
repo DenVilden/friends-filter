@@ -1,32 +1,31 @@
 .friend {
+  align-items: center;
   display: flex;
+  height: 6rem;
   justify-content: space-between;
-  min-height: 6rem;
+  max-width: 27.3rem;
   padding-left: 0.7rem;
 
   &:hover {
     background-color: $light-gray;
   }
+}
 
-  div {
-    @media (min-width: $non-mobile) {
-      align-items: center;
-      display: flex;
-    }
-  }
+.friend div {
+  align-items: center;
+  display: flex;
+}
 
-  img {
-    border-radius: 50%;
-  }
+.friend img {
+  border-radius: 50%;
+}
 
-  p {
-    line-height: 1.5rem;
-    padding-left: 0.7rem;
-  }
+.friend p {
+  line-height: 1.5rem;
+  padding-left: 0.7rem;
+}
 
-  button {
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-  }
+.friend button {
+  background-color: transparent;
+  padding-right: 0.7rem;
 }

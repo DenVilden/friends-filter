@@ -1,27 +1,25 @@
 <div class="container">
   <header class="header">
     <h1 class="header-title">Выберите друзей</h1>
-    <button class="header-button">
-      <i class="fas fa-times" style="color: #fff; font-size: 2.2rem;"></i>
-    </button>
   </header>
   <section class="filter">
     <i class="fa fa-search filter-glyph"></i>
-    <input class="filter-input filter-input--padding" type="text" placeholder="Начните вводить имя друга">
-    <input class="filter-input" type="text" placeholder="Название">
+    <input class="filter-input filter-input-all filter-input--padding" type="text" placeholder="Начните вводить имя друга">
+    <input class="filter-input filter-input-fav" type="text" placeholder="Название">
   </section>
   <main class="friends">
     <div class="friends-wrapper friends-wrapper--border">
       <h2 class="friends-title">Ваши друзья</h2>
-      <ul class="friends-list">
-        {{> "friend.hbs"}}
+      <ul class="friends-list" id="friends-all">
+        <span>
+          <i class="fas fa-spinner fa-spin" style="margin-top: 12rem; font-size: 5rem;"></i>
+          <p>Загружаю друзей</p>
+        </span>
       </ul>
     </div>
     <div class="friends-wrapper">
-      <h2 class="friends-title">Друзья в списке</h2>
-      <ul class="friends-list">
-        {{> "friend.hbs"}}
-      </ul>
+      <h2 class="friends-title friends-title--margin">Друзья в списке</h2>
+      <ul class="friends-list" id="friends-fav"></ul>
     </div>
   </main>
   <footer class="footer">
