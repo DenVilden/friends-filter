@@ -20,10 +20,9 @@ export default class Controller {
     this.friendsAllDOM.addEventListener('click', this.addFriend.bind(this));
     this.friendsFavDOM.addEventListener('click', this.removeFriend.bind(this));
     this.friendsAllDOM.addEventListener('dragstart', this.dragFriend.bind(this));
-
-    this.filterAll();
-    this.filterFav();
-    this.saveFriends();
+    document.querySelector('.input-all').addEventListener('input', this.filterAll.bind(this));
+    document.querySelector('.input-fav').addEventListener('input', this.filterFav.bind(this));
+    document.querySelector('.footer-button').addEventListener('click', this.saveFriends.bind(this));
   }
 
   renderAll() {
@@ -76,29 +75,20 @@ export default class Controller {
     }
   }
 
-  filterAll() {
-    const input = document.querySelector('.filter-input-all');
-    input.addEventListener('input', (evt) => {
-      // set filter to current input value
-      this.filters.textAll = evt.target.value.trim();
-      this.renderAll();
-    });
+  filterAll(evt) {
+    // set filter to current input value
+    this.filters.textAll = evt.target.value.trim();
+    this.renderAll();
   }
 
-  filterFav() {
-    const input = document.querySelector('.filter-input-fav');
-    input.addEventListener('input', (evt) => {
-      this.filters.textFav = evt.target.value.trim();
-      this.renderFav();
-    });
+  filterFav(evt) {
+    this.filters.textFav = evt.target.value.trim();
+    this.renderFav();
   }
 
   saveFriends() {
-    const button = document.querySelector('.footer-button');
-    button.addEventListener('click', () => {
-      // save to local storage
-      Loader.saveFriends(this.model.friendsFav);
-      alert('Сохранено');
-    });
+    // save to local storage
+    Loader.saveFriends(this.model.friendsFav);
+    alert('Сохранено');
   }
 }

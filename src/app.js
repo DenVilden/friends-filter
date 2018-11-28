@@ -8,9 +8,9 @@ import Model from './modules/Model';
 import Controller from './modules/Controller';
 
 (() => {
-  Loader.loadData().then((friends) => {
+  Loader.loadFriends().then((friends) => {
     const savedFriends = Loader.getSavedFriends();
-    const model = new Model(friends, savedFriends);
+    const model = new Model(friends.items, savedFriends);
     new Controller(model);
   });
 })();
