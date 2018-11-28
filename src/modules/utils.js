@@ -6,3 +6,7 @@ export const getFilters = (friends, toFind) =>
   friends.filter(
     friend => filterName(friend.first_name, toFind) || filterName(friend.last_name, toFind),
   );
+
+export const render = (element, template) => {
+  element.innerHTML = template;
+};

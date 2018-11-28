@@ -1,7 +1,7 @@
 {{#each this}}
 <li class="friend" data-id="{{id}}" {{#unless favorites}} draggable="true" {{/unless}}>
   <div>
-    <img src="{{photo_50}}" height="45" width="45">
+    <img src="{{photo_50}}" height="45" width="45" draggable="false">
     <p>{{first_name}} {{last_name}}</p>
   </div>
   <button class="friend-button">

@@ -1,6 +1,6 @@
 import View from './View';
 import Loader from './Loader';
-import { getFilters } from './filters';
+import { getFilters, render } from './utils';
 
 export default class Controller {
   constructor(model) {
@@ -25,14 +25,16 @@ export default class Controller {
   }
 
   renderAll() {
-    // stores current filters array
-    this.friendsAllFiltered = getFilters(this.model.friendsAll, this.filters.textAll);
-    this.friendsAllDOM.innerHTML = new View(this.friendsAllFiltered).template;
+    // render based on current filter value
+    const filtered = getFilters(this.model.friendsAll, this.filters.textAll);
+    const template = new View(filtered).template;
+    render(this.friendsAllDOM, template);
   }
 
   renderFav() {
-    this.friendsFavFiltered = getFilters(this.model.friendsFav, this.filters.textFav);
-    this.friendsFavDOM.innerHTML = new View(this.friendsFavFiltered).template;
+    const filtered = getFilters(this.model.friendsFav, this.filters.textFav);
+    const template = new View(filtered).template;
+    render(this.friendsFavDOM, template);
   }
 
   addFriend() {
@@ -52,16 +54,22 @@ export default class Controller {
 
     this.friendsAllDOM.addEventListener('dragstart', (evt) => {
       id = evt.target.dataset.id;
-    });
 
-    this.friendsFavDOM.addEventListener('dragover', (evt) => {
-      evt.preventDefault();
-    });
+      const dragover = (dragEvt) => {
+        dragEvt.preventDefault();
+      };
 
-    this.friendsFavDOM.addEventListener('drop', () => {
-      this.model.addFriend(id);
-      this.renderAll();
-      this.renderFav();
+      const drop = () => {
+        this.model.addFriend(id);
+        this.renderAll();
+        this.renderFav();
+
+        this.friendsFavDOM.removeEventListener('dragover', dragover);
+        this.friendsFavDOM.removeEventListener('drop', drop);
+      };
+
+      this.friendsFavDOM.addEventListener('dragover', dragover);
+      this.friendsFavDOM.addEventListener('drop', drop);
     });
   }
 
@@ -80,6 +88,7 @@ export default class Controller {
 
   filterAll() {
     const input = document.querySelector('.filter-input-all');
+
     input.addEventListener('input', (evt) => {
       // set filter to current input value
       this.filters.textAll = evt.target.value.trim();
@@ -90,6 +99,7 @@ export default class Controller {
 
   filterFav() {
     const input = document.querySelector('.filter-input-fav');
+
     input.addEventListener('input', (evt) => {
       this.filters.textFav = evt.target.value.trim();
 
@@ -99,6 +109,7 @@ export default class Controller {
 
   saveFriends() {
     const button = document.querySelector('.footer-button');
+
     button.addEventListener('click', () => {
       try {
         // save to local storage

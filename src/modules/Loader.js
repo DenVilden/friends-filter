@@ -20,7 +20,7 @@ export default class Loader {
     throw new Error(`${response.status}: ${response.statusText}`);
   }
 
-  static getFriends() {
+  static getSavedFriends() {
     const friendsJSON = localStorage.getItem('friends');
 
     try {
