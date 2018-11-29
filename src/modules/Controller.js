@@ -9,7 +9,7 @@ export default class Controller {
     // stores inputs value
     this.filters = {
       textAll: '',
-      textFav: '',
+      textFav: ''
     };
 
     this.friendsAllDOM = document.querySelector('#all');
@@ -20,10 +20,19 @@ export default class Controller {
 
     this.friendsAllDOM.addEventListener('click', this.addFriend.bind(this));
     this.friendsFavDOM.addEventListener('click', this.removeFriend.bind(this));
-    this.friendsAllDOM.addEventListener('dragstart', this.addFriendDrag.bind(this));
-    document.querySelector('#input-all').addEventListener('input', this.filterAll.bind(this));
-    document.querySelector('#input-fav').addEventListener('input', this.filterFav.bind(this));
-    document.querySelector('#save-button').addEventListener('click', this.saveFriends.bind(this));
+    this.friendsAllDOM.addEventListener(
+      'dragstart',
+      this.addFriendDrag.bind(this)
+    );
+    document
+      .querySelector('#input-all')
+      .addEventListener('input', this.filterAll.bind(this));
+    document
+      .querySelector('#input-fav')
+      .addEventListener('input', this.filterFav.bind(this));
+    document
+      .querySelector('#save-button')
+      .addEventListener('click', this.saveFriends.bind(this));
   }
 
   renderAll() {
@@ -50,7 +59,7 @@ export default class Controller {
   addFriendDrag(evt) {
     const id = evt.target.closest('li').dataset.id;
 
-    const dragover = (dragEvt) => {
+    const dragover = dragEvt => {
       dragEvt.preventDefault();
     };
 

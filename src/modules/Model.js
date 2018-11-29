@@ -30,7 +30,7 @@ export default class Model {
   filterFriends() {
     // removes all non unique friends from array before rendering
     this.friendsAll = this.friendsAll.filter(
-      friend => !this.friendsFav.some(friendFav => friendFav.id === friend.id),
+      friend => !this.friendsFav.some(friendFav => friendFav.id === friend.id)
     );
   }
 }

@@ -14,7 +14,7 @@ const sharedConfig = {
   entry: ['./src/index.js'],
   output: {
     filename: 'js/main.js',
-    path: path.resolve('dist'),
+    path: path.resolve('dist')
   },
   module: {
     rules: [
@@ -30,25 +30,25 @@ const sharedConfig = {
                   reset: {
                     margin: 0,
                     padding: 0,
-                    boxSizing: 'border-box',
-                  },
+                    boxSizing: 'border-box'
+                  }
                 }),
                 postcssNormalize({
-                  forceImport: true,
+                  forceImport: true
                 }),
                 postcssUncss({
-                  html: ['./src/index.hbs', './src/templates/*.hbs'],
+                  html: ['./src/index.hbs', './src/templates/*.hbs']
                 }),
-                autoprefixer(),
-              ],
-            },
+                autoprefixer()
+              ]
+            }
           },
-          'sass-loader',
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.hbs$/,
-        loader: 'handlebars-loader',
+        loader: 'handlebars-loader'
       },
       {
         test: /\.js$/,
@@ -56,25 +56,25 @@ const sharedConfig = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env'],
-          plugins: ['@babel/plugin-transform-runtime'],
-        },
+          plugins: ['@babel/plugin-transform-runtime']
+        }
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'font',
-        },
-      },
-    ],
+          outputPath: 'font'
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Другофильтр',
-      template: './src/index.hbs',
-    }),
-  ],
+      template: './src/index.hbs'
+    })
+  ]
 };
 
 const productionConfig = {
@@ -86,12 +86,12 @@ const productionConfig = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../',
-            },
-          },
-        ],
-      },
-    ],
+              publicPath: '../'
+            }
+          }
+        ]
+      }
+    ]
   },
   optimization: {
     splitChunks: {
@@ -99,26 +99,26 @@ const productionConfig = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           filename: 'js/vendor.js',
-          chunks: 'all',
-        },
-      },
-    },
+          chunks: 'all'
+        }
+      }
+    }
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: 'js/main.js.map',
-      exclude: ['js/vendor.js'],
+      exclude: ['js/vendor.js']
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/styles.css',
+      filename: 'css/styles.css'
     }),
     new OptimizeCSSAssetsPlugin({
       cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
+        preset: ['default', { discardComments: { removeAll: true } }]
+      }
     }),
-    new CleanWebpackPlugin(['dist']),
-  ],
+    new CleanWebpackPlugin(['dist'])
+  ]
 };
 
 const developmentConfig = {
@@ -126,11 +126,11 @@ const developmentConfig = {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: ['style-loader'],
-      },
-    ],
+        use: ['style-loader']
+      }
+    ]
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map'
 };
 
 module.exports = (env, options) => {
