@@ -9,7 +9,7 @@ import Controller from './modules/Controller';
 
 (() => {
   Loader.loadFriends().then((friends) => {
-    const savedFriends = Loader.getSavedFriends();
+    const savedFriends = Loader.getFriends();
     const model = new Model(friends.items, savedFriends);
     new Controller(model);
   });

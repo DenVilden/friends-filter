@@ -6,6 +6,7 @@ export default class Controller {
   constructor(model) {
     this.model = model;
 
+    // stores inputs value
     this.filters = {
       textAll: '',
       textFav: '',
@@ -19,7 +20,7 @@ export default class Controller {
 
     this.friendsAllDOM.addEventListener('click', this.addFriend.bind(this));
     this.friendsFavDOM.addEventListener('click', this.removeFriend.bind(this));
-    this.friendsAllDOM.addEventListener('dragstart', this.dragFriend.bind(this));
+    this.friendsAllDOM.addEventListener('dragstart', this.addFriendDrag.bind(this));
     document.querySelector('#input-all').addEventListener('input', this.filterAll.bind(this));
     document.querySelector('#input-fav').addEventListener('input', this.filterFav.bind(this));
     document.querySelector('#save-button').addEventListener('click', this.saveFriends.bind(this));
@@ -39,14 +40,14 @@ export default class Controller {
   addFriend(evt) {
     if (evt.target.tagName === 'BUTTON') {
       // get vk id of clicked element
-      const id = evt.target.parentElement.dataset.id;
+      const id = evt.target.closest('li').dataset.id;
       this.model.addFriend(id);
       this.renderAll();
       this.renderFav();
     }
   }
 
-  dragFriend(evt) {
+  addFriendDrag(evt) {
     const id = evt.target.dataset.id;
 
     const dragover = (dragEvt) => {
@@ -58,17 +59,19 @@ export default class Controller {
       this.renderAll();
       this.renderFav();
 
+      // removes listeners on drop
       this.friendsFavDOM.removeEventListener('dragover', dragover);
       this.friendsFavDOM.removeEventListener('drop', drop);
     };
 
+    // adds listeners on drag start
     this.friendsFavDOM.addEventListener('dragover', dragover);
     this.friendsFavDOM.addEventListener('drop', drop);
   }
 
   removeFriend(evt) {
     if (evt.target.tagName === 'BUTTON') {
-      const id = evt.target.parentElement.dataset.id;
+      const id = evt.target.closest('li').dataset.id;
       this.model.removeFriend(id);
       this.renderAll();
       this.renderFav();
@@ -88,7 +91,7 @@ export default class Controller {
 
   saveFriends() {
     // save to local storage
-    Loader.saveFriends(this.model.friendsFav);
+    Loader.setFriends(this.model.friendsFav);
     alert('Сохранено');
   }
 }

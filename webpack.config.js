@@ -11,7 +11,7 @@ const postcssAutoreset = require('postcss-autoreset');
 const postcssUncss = require('postcss-uncss');
 
 const sharedConfig = {
-  entry: ['./src/app.js'],
+  entry: ['./src/index.js'],
   output: {
     filename: 'js/main.js',
     path: path.resolve('dist'),
@@ -37,7 +37,7 @@ const sharedConfig = {
                   forceImport: true,
                 }),
                 postcssUncss({
-                  html: ['./src/templates/*.hbs'],
+                  html: ['./src/index.hbs', './src/templates/*.hbs'],
                 }),
                 autoprefixer(),
               ],
@@ -72,7 +72,7 @@ const sharedConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Другофильтр',
-      template: 'index.hbs',
+      template: './src/index.hbs',
     }),
   ],
 };

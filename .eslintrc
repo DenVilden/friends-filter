@@ -9,9 +9,8 @@
   "extends": "airbnb-base",
   "rules": {
     "no-param-reassign": "off",
-    "prefer-destructuring": "off",
     "no-new": "off",
-    "implicit-arrow-linebreak": "off",
-    "no-alert": "off"
+    "no-alert": "off",
+    "prefer-destructuring": "off"
   }
 }

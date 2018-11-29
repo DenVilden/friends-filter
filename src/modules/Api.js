@@ -1,9 +1,9 @@
 import VK from 'vk-openapi';
 
-export default class VKApi {
+export default class Api {
   static init() {
     VK.init({
-      apiId: 6765378,
+      apiId: 6766409,
     });
   }
 

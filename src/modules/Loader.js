@@ -1,4 +1,4 @@
-import Api from './utils/VKApi';
+import Api from './Api';
 
 export default class Loader {
   static async loadFriends() {
@@ -7,7 +7,7 @@ export default class Loader {
     return Api.callAPI('friends.get', { fields: 'photo_50' });
   }
 
-  static getSavedFriends() {
+  static getFriends() {
     const friendsJSON = localStorage.getItem('friends');
 
     try {
@@ -17,7 +17,7 @@ export default class Loader {
     }
   }
 
-  static saveFriends(friends) {
+  static setFriends(friends) {
     localStorage.setItem('friends', JSON.stringify(friends));
   }
 }
