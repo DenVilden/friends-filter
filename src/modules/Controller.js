@@ -48,7 +48,7 @@ export default class Controller {
   }
 
   addFriendDrag(evt) {
-    const id = evt.target.dataset.id;
+    const id = evt.target.closest('li').dataset.id;
 
     const dragover = (dragEvt) => {
       dragEvt.preventDefault();
