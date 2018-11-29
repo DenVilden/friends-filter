@@ -1,5 +1,7 @@
 ## Drugofiltr
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/DenVilden/drugofiltr.svg)](https://greenkeeper.io/)
+
 ### Доступные команды
 
 - `npm/yarn install` - установить зависимости
