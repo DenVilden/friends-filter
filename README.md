@@ -1,4 +1,4 @@
-## Drugofiltr
+## Drugofilter
 
 [![Build Status](https://travis-ci.org/DenVilden/drugofiltr.svg?branch=master)](https://travis-ci.org/DenVilden/drugofiltr)
 [![Greenkeeper badge](https://badges.greenkeeper.io/DenVilden/drugofiltr.svg)](https://greenkeeper.io/)
