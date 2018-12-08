@@ -5,9 +5,7 @@ export default class Api {
     VK.init({
       apiId: 6766409
     });
-  }
 
-  static auth() {
     return new Promise((resolve, reject) => {
       VK.Auth.login(data => {
         if (data.session) {

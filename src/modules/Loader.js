@@ -3,7 +3,6 @@ import Api from './Api';
 export default class Loader {
   static async loadFriends() {
     await Api.init();
-    await Api.auth();
     return Api.callAPI('friends.get', { fields: 'photo_50' });
   }
 
