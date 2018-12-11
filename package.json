@@ -1,20 +1,16 @@
 {
-  "name": "drugofiltr",
+  "name": "drugofilter",
   "version": "1.0.0",
   "description": "filter your friends",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Denis Tolmachev",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open",
-    "test": "eslint src && stylelint src/stylesheets"
+    "test": "eslint src && stylelint src/styles"
   },
-  "browserslist": [
-    "last 2 versions",
-    ">1%",
-    "not dead"
-  ],
+  "browserslist": "defaults",
   "dependencies": {
     "@babel/runtime": "7.2.0",
     "@fortawesome/fontawesome-svg-core": "1.2.9",
@@ -28,6 +24,7 @@
     "@babel/preset-env": "7.2.0",
     "autoprefixer": "9.4.2",
     "babel-loader": "8.0.4",
+    "clean-css": "4.2.1",
     "clean-webpack-plugin": "1.0.0",
     "css-loader": "2.0.0",
     "eslint": "5.10.0",
@@ -38,7 +35,7 @@
     "handlebars-loader": "1.7.0",
     "html-webpack-plugin": "3.2.0",
     "mini-css-extract-plugin": "0.5.0",
-    "node-sass": "4.10.0",
+    "node-sass": "4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-autoreset": "2.0.2",
     "postcss-loader": "3.0.0",
@@ -53,6 +50,6 @@
     "webpack": "4.27.1",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.10",
-    "webpack-merge": "4.1.4"
+    "webpack-merge": "4.1.5"
   }
 }
