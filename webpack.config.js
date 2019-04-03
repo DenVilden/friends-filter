@@ -56,7 +56,7 @@ const sharedConfig = {
         }
       },
       {
-        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
